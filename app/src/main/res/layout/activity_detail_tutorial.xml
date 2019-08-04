@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.DetailTutorialActivity"
+    android:background="#FFF">
+
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/youtube_player"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/fail_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/youtube_player"
+        android:text="Maaf, video tidak dapat ditampilkan"
+        android:textAlignment="center"
+        android:padding="16dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/judul_tutorial"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/fail_msg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:text="Tutorial Nasi Goreng"
+        android:layout_margin="16dp"
+        android:textSize="16sp"/>
+
+    <View
+        android:id="@+id/line_horizontal1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/judul_tutorial"
+        android:background="#CCC"
+        android:layout_marginTop="16dp"/>
+
+    <ImageView
+        android:id="@+id/image_channel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/judul_tutorial"
+        app:layout_constraintTop_toBottomOf="@id/line_horizontal1"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_account_circle_black_48dp"/>
+
+    <TextView
+        android:id="@+id/nama_channel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/image_channel"
+        app:layout_constraintTop_toTopOf="@id/image_channel"
+        android:text="Youtube"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:textColor="#000"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/published"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/nama_channel"
+        app:layout_constraintTop_toBottomOf="@id/nama_channel"
+        android:text="1 day ago"
+        android:textSize="12sp"/>
+
+    <View
+        android:id="@+id/line_horizontal2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_channel"
+        android:background="#CCC"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/deskripsi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/judul_tutorial"
+        app:layout_constraintTop_toBottomOf="@id/line_horizontal2"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Deskripsi"/>
+
+</android.support.constraint.ConstraintLayout>

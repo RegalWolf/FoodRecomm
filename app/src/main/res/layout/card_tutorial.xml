@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="24dp">
+
+    <ImageView
+        android:id="@+id/image_tutorial"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/nasi_goreng"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/nama_tutorial"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_tutorial"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Tutorial Memasak Nasi Goreng"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/channel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/nama_tutorial"
+        app:layout_constraintTop_toBottomOf="@id/nama_tutorial"
+        android:layout_marginTop="4dp"
+        android:text="Youtube"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/channel"
+        app:layout_constraintTop_toTopOf="@id/channel"
+        android:text="-"
+        android:textSize="12sp"
+        android:layout_marginLeft="4dp"/>
+
+    <TextView
+        android:id="@+id/published"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/divider"
+        app:layout_constraintTop_toTopOf="@id/channel"
+        android:layout_marginLeft="4dp"
+        android:text="1 day ago"
+        android:textSize="12sp"/>
+
+</android.support.constraint.ConstraintLayout>

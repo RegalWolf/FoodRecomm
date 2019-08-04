@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_tutorial"
+        android:icon="@drawable/ic_ondemand_video_black_24dp"
+        android:title="Tutorial"
+        android:iconTint="#FFF"/>
+
+    <item
+        android:id="@+id/nav_restoran"
+        android:icon="@drawable/ic_restaurant_black_24dp"
+        android:title="Restoran"
+        android:iconTint="#FFF"/>
+
+</menu>

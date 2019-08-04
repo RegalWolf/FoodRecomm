@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="16dp">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <TextView
+        android:id="@+id/tanggal_history"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/guideline_left"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Today"
+        android:textColor="#FF6161" />
+
+    <TextView
+        android:id="@+id/text_kalori_dibutuhkan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/tanggal_history"
+        android:layout_marginTop="8dp"
+        android:text="Kalori dibutuhkan"
+        android:textColor="#6B6B6B"/>
+
+    <TextView
+        android:id="@+id/jumlah_kalori_dibutuhkan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintTop_toTopOf="@id/text_kalori_dibutuhkan"
+        android:text="2000 Kkal"
+        android:textColor="#6B6B6B" />
+
+    <TextView
+        android:id="@+id/text_kalori_dikonsumsi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/text_kalori_dibutuhkan"
+        android:layout_marginTop="8dp"
+        android:text="Kalori dikonsumsi"
+        android:textColor="#6B6B6B"/>
+
+    <TextView
+        android:id="@+id/jumlah_kalori_dikonsumsi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintTop_toTopOf="@id/text_kalori_dikonsumsi"
+        android:text="1970 Kkal"
+        android:textColor="#6B6B6B" />
+
+    <View
+        android:id="@+id/line_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="#CCC"
+        app:layout_constraintTop_toBottomOf="@id/jumlah_kalori_dikonsumsi"/>
+
+</android.support.constraint.ConstraintLayout>

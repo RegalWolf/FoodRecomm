@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="8dp">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <ImageView
+        android:id="@+id/btn_hapus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintTop_toTopOf="@id/nama_makanan"
+        app:layout_constraintBottom_toBottomOf="@id/nama_makanan"
+        app:srcCompat="@drawable/ic_delete_black_24dp" />
+
+    <TextView
+        android:id="@+id/nama_makanan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/guideline_left"
+        app:layout_constraintEnd_toStartOf="@id/btn_hapus"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="8dp"
+        android:text="Burger King"
+        android:textColor="#3A3A3A"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/protein"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/jml_protein"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        android:text="Protein"
+        android:textColor="#6B6B6B"
+        android:textAlignment="center"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/jml_protein"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/protein"
+        app:layout_constraintEnd_toEndOf="@id/protein"
+        app:layout_constraintTop_toBottomOf="@id/nama_makanan"
+        android:text="270"
+        android:layout_marginTop="8dp"
+        android:textColor="#3A3A3A"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/karbohidrat"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/jml_karbohidrat"
+        app:layout_constraintStart_toEndOf="@id/protein"
+        android:layout_marginLeft="16dp"
+        android:text="Karbo"
+        android:textColor="#6B6B6B"
+        android:textSize="12sp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/jml_karbohidrat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/karbohidrat"
+        app:layout_constraintEnd_toEndOf="@id/karbohidrat"
+        app:layout_constraintTop_toTopOf="@id/jml_protein"
+        android:text="120"
+        android:textColor="#3A3A3A"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/lemak"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/jml_lemak"
+        app:layout_constraintStart_toEndOf="@id/karbohidrat"
+        android:layout_marginLeft="16dp"
+        android:text="Lemak"
+        android:textColor="#6B6B6B"
+        android:textSize="12sp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/jml_lemak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/lemak"
+        app:layout_constraintEnd_toEndOf="@id/lemak"
+        app:layout_constraintTop_toTopOf="@id/jml_protein"
+        android:text="0.20"
+        android:textColor="#3A3A3A"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/kalsium"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/jml_kalsium"
+        app:layout_constraintStart_toEndOf="@id/lemak"
+        android:layout_marginLeft="16dp"
+        android:text="Kalsium"
+        android:textColor="#6B6B6B"
+        android:textSize="12sp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/jml_kalsium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/kalsium"
+        app:layout_constraintEnd_toEndOf="@id/kalsium"
+        app:layout_constraintTop_toTopOf="@id/jml_protein"
+        android:text="28.20"
+        android:textColor="#3A3A3A"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/fosfor"
+        android:layout_width="45dp"
+        android:layout_height="13dp"
+        android:layout_marginLeft="16dp"
+        android:text="Fosfor"
+        android:textAlignment="center"
+        android:textColor="#6B6B6B"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/kalsium"
+        app:layout_constraintTop_toBottomOf="@id/jml_fosfor" />
+
+    <TextView
+        android:id="@+id/jml_fosfor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/fosfor"
+        app:layout_constraintEnd_toEndOf="@id/fosfor"
+        app:layout_constraintTop_toTopOf="@id/jml_protein"
+        android:text="28.20"
+        android:textColor="#3A3A3A"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/vit_a"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/jml_vit_a"
+        app:layout_constraintStart_toEndOf="@id/guideline_left"
+        android:text="Vit-A"
+        android:textColor="#6B6B6B"
+        android:textSize="12sp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/jml_vit_a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/vit_a"
+        app:layout_constraintEnd_toEndOf="@id/vit_a"
+        app:layout_constraintTop_toBottomOf="@id/protein"
+        android:text="450"
+        android:layout_marginTop="4dp"
+        android:textColor="#3A3A3A"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/vit_b"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/jml_vit_b"
+        app:layout_constraintStart_toEndOf="@id/vit_a"
+        android:layout_marginLeft="16dp"
+        android:text="Vit-B1"
+        android:textColor="#6B6B6B"
+        android:textSize="12sp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/jml_vit_b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/vit_b"
+        app:layout_constraintEnd_toEndOf="@id/vit_b"
+        app:layout_constraintTop_toTopOf="@id/jml_vit_a"
+        android:text="300"
+        android:textColor="#3A3A3A"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/vit_c"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/jml_vit_c"
+        app:layout_constraintStart_toEndOf="@id/vit_b"
+        android:layout_marginLeft="16dp"
+        android:text="Vit-C"
+        android:textColor="#6B6B6B"
+        android:textSize="12sp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/jml_vit_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/vit_c"
+        app:layout_constraintEnd_toEndOf="@id/vit_c"
+        app:layout_constraintTop_toTopOf="@id/jml_vit_a"
+        android:text="300"
+        android:textColor="#3A3A3A"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/zat_besi"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/jml_zat_besi"
+        app:layout_constraintStart_toEndOf="@id/vit_c"
+        android:layout_marginLeft="16dp"
+        android:text="Zat Besi"
+        android:textColor="#6B6B6B"
+        android:textSize="12sp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/jml_zat_besi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/zat_besi"
+        app:layout_constraintEnd_toEndOf="@id/zat_besi"
+        app:layout_constraintTop_toTopOf="@id/jml_vit_a"
+        android:text="300"
+        android:textColor="#3A3A3A"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/kalori"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/jml_kalori"
+        app:layout_constraintStart_toEndOf="@id/zat_besi"
+        android:layout_marginLeft="16dp"
+        android:text="Kalori"
+        android:textColor="#6B6B6B"
+        android:textSize="12sp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/jml_kalori"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/kalori"
+        app:layout_constraintEnd_toEndOf="@id/kalori"
+        app:layout_constraintTop_toTopOf="@id/jml_zat_besi"
+        android:text="300"
+        android:textColor="#3A3A3A"
+        android:textSize="12sp"/>
+
+    <View
+        android:id="@+id/line_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#CCC"
+        app:layout_constraintTop_toBottomOf="@id/vit_a"/>
+
+</android.support.constraint.ConstraintLayout>

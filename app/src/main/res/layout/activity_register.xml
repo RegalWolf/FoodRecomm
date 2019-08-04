@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.RegisterActivity"
+    android:background="@drawable/bg_first_layout">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="24dp" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+        android:textColor="#FFF"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:letterSpacing=".05"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sub_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="and"
+        android:textColor="#FFF"
+        android:textSize="24dp"
+        android:letterSpacing=".05"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/title"/>
+
+    <TextView
+        android:id="@+id/sub_title2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Get Recomendation Food"
+        android:textColor="#FFF"
+        android:textSize="24dp"
+        android:letterSpacing=".05"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/sub_title"/>
+
+    <EditText
+        android:id="@+id/editText_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="125dp"
+        android:hint="Email"
+        android:textColor="#FFF"
+        android:textColorHint="#CCC"
+        android:backgroundTint="#FFF"
+        android:paddingBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/email_msg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/guideline_left"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/editText_email"
+        android:text="Email tidak boleh kosong"
+        android:paddingLeft="4dp"
+        android:textColor="#FFF"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/editText_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/email_msg"
+        android:layout_marginTop="8dp"
+        android:hint="Password"
+        android:textColor="#FFF"
+        android:textColorHint="#CCC"
+        android:inputType="textPassword"
+        android:backgroundTint="#FFF"
+        android:paddingBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/password_msg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/guideline_left"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/editText_password"
+        android:text="Password tidak boleh kosong"
+        android:paddingLeft="4dp"
+        android:textColor="#FFF"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/editText_confirmPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/password_msg"
+        android:layout_marginTop="8dp"
+        android:hint="Confirm Password"
+        android:textColor="#FFF"
+        android:textColorHint="#CCC"
+        android:inputType="textPassword"
+        android:backgroundTint="#FFF"
+        android:paddingBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/confirmPassword_msg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/guideline_left"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/editText_confirmPassword"
+        android:text="Password tidak sama"
+        android:paddingLeft="4dp"
+        android:textColor="#FFF"
+        android:visibility="gone"/>
+
+    <View
+        android:id="@+id/line_left"
+        android:layout_width="100dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toEndOf="@id/guideline_left"
+        android:background="#FFF"
+        app:layout_constraintTop_toTopOf="@id/link_register"
+        app:layout_constraintBottom_toBottomOf="@id/link_register"/>
+
+    <View
+        android:id="@+id/line_right"
+        android:layout_width="100dp"
+        android:layout_height="1dp"
+        android:background="#FFF"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintTop_toTopOf="@id/link_register"
+        app:layout_constraintBottom_toBottomOf="@id/link_register"/>
+
+    <Button
+        android:id="@+id/btn_login2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/link_register"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        android:background="@drawable/bg_btn_1"
+        android:text="Register"
+        android:textColor="#FFF"
+        android:onClick="registerButtonClick"/>
+
+    <TextView
+        android:id="@+id/link_register"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:text="Login disini"
+        android:textAlignment="center"
+        android:textColor="#FFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/line_right"
+        app:layout_constraintStart_toEndOf="@+id/line_left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:onClick="loginButtonClick"/>
+
+</android.support.constraint.ConstraintLayout>

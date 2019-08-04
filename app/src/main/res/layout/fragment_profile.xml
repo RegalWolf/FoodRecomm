@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="24dp">
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_left"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="16dp" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="16dp" />
+
+            <TextView
+                android:id="@+id/jenisKelamin1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="Jenis kelamin"
+                android:layout_marginTop="24dp"
+                android:textColor="#6B6B6B"
+                android:textSize="14sp"/>
+
+            <Spinner
+                android:id="@+id/spinner_jenis_kelamin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
+                app:layout_constraintEnd_toEndOf="@id/guideline_right"
+                app:layout_constraintTop_toBottomOf="@id/jenisKelamin1"
+                android:background="@drawable/et_light"
+                android:layout_marginTop="8dp"
+                android:paddingLeft="4dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/spinner_jenis_kelamin"
+                app:layout_constraintTop_toTopOf="@id/spinner_jenis_kelamin"
+                app:layout_constraintBottom_toBottomOf="@id/spinner_jenis_kelamin"
+                android:layout_marginRight="4dp"
+                app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp"/>
+
+            <TextView
+                android:id="@+id/jk_msg1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                app:layout_constraintTop_toBottomOf="@id/spinner_jenis_kelamin"
+                android:text="Jenis kelamin tidak boleh kosong"
+                android:layout_marginTop="8dp"
+                android:textColor="#FF6161"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/usia1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/jk_msg1"
+                app:layout_constraintStart_toEndOf="@id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                android:text="Usia"
+                android:textColor="#6B6B6B"
+                android:layout_marginTop="16dp"
+                android:textSize="14sp"/>
+
+            <EditText
+                android:inputType="number"
+                android:id="@+id/editText_usia1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                app:layout_constraintTop_toBottomOf="@id/usia1"
+                android:layout_marginTop="8dp"
+                android:textColor="#000"
+                android:background="@drawable/et_light"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"/>
+
+            <TextView
+                android:id="@+id/usia_msg1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                app:layout_constraintTop_toBottomOf="@id/editText_usia1"
+                android:text="Usia tidak boleh kosong"
+                android:layout_marginTop="8dp"
+                android:textColor="#FF6161"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/beratBadan1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/usia_msg1"
+                app:layout_constraintStart_toEndOf="@id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                android:text="Berat Badan"
+                android:textColor="#6B6B6B"
+                android:layout_marginTop="16dp"
+                android:textSize="14sp"/>
+
+            <EditText
+                android:inputType="number"
+                android:id="@+id/editText_beratbadan1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                app:layout_constraintTop_toBottomOf="@id/beratBadan1"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/et_light"
+                android:textColor="#000"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"/>
+
+            <TextView
+                android:id="@+id/beratBadan_msg1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                app:layout_constraintTop_toBottomOf="@id/editText_beratbadan1"
+                android:text="Berat badan tidak boleh kosong"
+                android:layout_marginTop="8dp"
+                android:textColor="#FF6161"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tinggiBadan1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/beratBadan_msg1"
+                app:layout_constraintStart_toEndOf="@id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                android:text="Tinggi Badan"
+                android:textColor="#6B6B6B"
+                android:layout_marginTop="16dp"
+                android:textSize="14sp"/>
+
+            <EditText
+                android:inputType="number"
+                android:id="@+id/editText_tinggibadan1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                app:layout_constraintTop_toBottomOf="@id/tinggiBadan1"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/et_light"
+                android:textColor="#000"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"/>
+
+            <TextView
+                android:id="@+id/tinggiBadan_msg1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                app:layout_constraintTop_toBottomOf="@id/editText_tinggibadan1"
+                android:text="Tinggi badan tidak boleh kosong"
+                android:layout_marginTop="8dp"
+                android:textColor="#FF6161"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tingkatAktivitas1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tinggiBadan_msg1"
+                app:layout_constraintStart_toEndOf="@id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                android:text="Tingkat Aktivitas"
+                android:textColor="#6B6B6B"
+                android:layout_marginTop="16dp"
+                android:textSize="14sp"/>
+
+            <Spinner
+                android:id="@+id/spinner_tingkat_aktivitas"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@id/btn_info"
+                app:layout_constraintTop_toBottomOf="@id/tingkatAktivitas1"
+                android:background="@drawable/et_light"
+                android:layout_marginTop="8dp"
+                android:paddingLeft="4dp"
+                android:paddingTop="8dp"
+                android:layout_marginRight="8dp"
+                android:paddingBottom="8dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/spinner_tingkat_aktivitas"
+                app:layout_constraintTop_toTopOf="@id/spinner_tingkat_aktivitas"
+                app:layout_constraintBottom_toBottomOf="@id/spinner_tingkat_aktivitas"
+                android:layout_marginRight="4dp"
+                app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp"/>
+
+            <ImageView
+                android:id="@+id/btn_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/guideline_right"
+                app:layout_constraintTop_toTopOf="@id/spinner_tingkat_aktivitas"
+                app:layout_constraintBottom_toBottomOf="@id/spinner_tingkat_aktivitas"
+                android:layout_marginRight="4dp"
+                app:srcCompat="@drawable/ic_info_48dp"
+                android:onClick="infoKategoriButtonClick"/>
+
+            <TextView
+                android:id="@+id/tingkatAktivitas_msg1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                app:layout_constraintTop_toBottomOf="@id/spinner_tingkat_aktivitas"
+                android:text="Tingkat aktivitas tidak boleh kosong"
+                android:layout_marginTop="8dp"
+                android:textColor="#FF6161"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/btn_simpan_profile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tingkatAktivitas_msg1"
+                app:layout_constraintStart_toEndOf="@id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/btn_simpan"
+                android:text="Simpan"
+                android:textColor="#FFF" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/info_popup_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#75000000"
+        android:visibility="gone"
+        android:onClick="infoKategoriPopupClick">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_left1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="24dp" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_right1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="24dp" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/guideline_left1"
+            app:layout_constraintEnd_toEndOf="@id/guideline_right1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/bg_popup">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                android:background="@drawable/bg_popup">
+
+                <TextView
+                    android:id="@+id/title_popup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="Tingkat Aktivitas"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/btn_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_close_grey_24dp"
+                    android:onClick="closeKategoriButtonClick"/>
+
+                <TextView
+                    android:id="@+id/text_sangat_ringan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/title_popup"
+                    android:layout_marginTop="24dp"
+                    android:text="Sangat Ringan"/>
+
+                <TextView
+                    android:id="@+id/value_sangat_ringan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/text_sangat_ringan"
+                    app:layout_constraintTop_toTopOf="@id/text_sangat_ringan"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginLeft="8dp"
+                    android:text=": Kurang Dari 25% Bergerak"/>
+
+                <TextView
+                    android:id="@+id/text_ringan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/value_sangat_ringan"
+                    android:layout_marginTop="8dp"
+                    android:text="Ringan"/>
+
+                <TextView
+                    android:id="@+id/value_ringan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/value_sangat_ringan"
+                    app:layout_constraintTop_toTopOf="@id/text_ringan"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text=": 75% Diam, 25% Bergerak"/>
+
+                <TextView
+                    android:id="@+id/text_sedang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/value_ringan"
+                    android:layout_marginTop="8dp"
+                    android:text="Sedang"/>
+
+                <TextView
+                    android:id="@+id/value_sedang"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/value_sangat_ringan"
+                    app:layout_constraintTop_toTopOf="@id/text_sedang"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text=": 40% Diam, 60% Aktivitas Pekerjaan"/>
+
+                <TextView
+                    android:id="@+id/text_berat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/value_sedang"
+                    android:layout_marginTop="8dp"
+                    android:text="Sedang"/>
+
+                <TextView
+                    android:id="@+id/value_berat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/value_sangat_ringan"
+                    app:layout_constraintTop_toTopOf="@id/text_berat"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text=": 25% Diam, 75% Aktivitas Pekerjaan"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

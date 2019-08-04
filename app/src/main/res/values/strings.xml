@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">Calories</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_restoran_maps">Map</string>
+    <string name="ble_not_supported">Bluetooth Not Support</string>
+    <string name="error_bluetooth_not_supported">Bluetooth Not Support</string>
+    <string name="unknown_device">Unknown Device</string>
+
+    <string-array name="rekomendasi_makanan">
+        <item>Semua Rekomendasi</item>
+        <item>Rekomendasi Sarapan</item>
+        <item>Rekomendasi Makan Siang</item>
+        <item>Rekomendasi Makan Malam</item>
+        <item>Rekomendasi Olahan Sayuran</item>
+        <item>Rekomendasi Olahan Telur</item>
+        <item>Rekomendasi Olahan Daging</item>
+        <item>Rekomendasi Olahan Ikan, Kerang, Udang</item>
+        <item>Rekomendasi Olahan Susu</item>
+        <item>Rekomendasi Olahan Serelia, Umbi-umbian</item>
+        <item>Rekomendasi Olahan Kacang, Biji-bijian</item>
+        <item>Rekomendasi Olahan Serba-serbi</item>
+        <item>Rekomendasi Buah-buahan</item>
+        <item>Makanan Semua Ketegori</item>
+        <item>Makanan Olahan Susu</item>
+        <item>Makanan Olahan Sayuran</item>
+        <item>Makanan Olahan Telur</item>
+        <item>Makanan Olahan Daging</item>
+        <item>Makanan Olahan Ikan, Kerang, Udang</item>
+        <item>Makanan Olahan Serelia, Umbi-umbian</item>
+        <item>Makanan Olahan Kacang, Biji-bijian</item>
+        <item>Makanan Olahan Serba-serbi</item>
+        <item>Buah-buahan</item>
+        <item>Makanan Dianjurkan</item>
+        <item>Makanan Normal</item>
+        <item>Makanan Dibatasi</item>
+        <item>Makanan Dihindari</item>
+    </string-array>
+
+    <string-array name="tingkat_aktivitas">
+        <item>Pilih Tingkat Aktivitas</item>
+        <item>Sangat Ringan</item>
+        <item>Ringan</item>
+        <item>Sedang</item>
+        <item>Berat</item>
+    </string-array>
+
+    <string-array name="jenis_kelamin">
+        <item>Pilih Jenis Kelamin</item>
+        <item>Laki-laki</item>
+        <item>Perempuan</item>
+    </string-array>
+
+    <string-array name="biodata">
+        <item>Profile</item>
+        <item>Makanan Disukai</item>
+        <item>Makanan Tidak Disukai</item>
+    </string-array>
+</resources>
