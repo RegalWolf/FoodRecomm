@@ -41,12 +41,13 @@ public class DetailHistoryActivity extends AppCompatActivity {
     private TextView text_tanggal;
     private TextView text_kalori_dibutuhkan;
     private TextView text_kalori_dikonsumsi;
+
     private RecyclerView recyclerViewHistoryMakanan;
     private TextView notFound;
 
     private ServerApiInterface serverApiInterface;
 
-    ProgressDialog dialog;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

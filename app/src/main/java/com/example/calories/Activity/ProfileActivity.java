@@ -38,6 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView et_usia;
     private TextView et_beratBadan;
     private TextView et_tinggiBadan;
+
     private Spinner spinnerJK;
     private Spinner spinnerAktivitas;
 

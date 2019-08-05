@@ -11,7 +11,7 @@ public class HistoryMakanan {
     private String nama;
 
     @SerializedName("kalori")
-    private String kalori;
+    private int kalori;
 
     @SerializedName("protein")
     private double protein;
@@ -49,7 +49,6 @@ public class HistoryMakanan {
     @SerializedName("tanggal")
     private String tanggal;
 
-
     @SerializedName("jumlah")
     private int jumlah;
 
@@ -64,7 +63,7 @@ public class HistoryMakanan {
         return nama;
     }
 
-    public String getKalori() {
+    public int getKalori() {
         return kalori;
     }
 

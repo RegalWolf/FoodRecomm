@@ -40,12 +40,11 @@ public class RestoranFragment extends Fragment {
     private String namaMakanan;
     private double lattitude;
     private double longitude;
-    private RecyclerView recyclerViewRestoran;
-    private TextView notFound;
 
+    private TextView notFound;
     private TextView fragmentTitle;
 
-    ProgressDialog dialog;
+    private ProgressDialog dialog;
 
     @Nullable
     @Override
@@ -63,7 +62,6 @@ public class RestoranFragment extends Fragment {
         initDialog();
 
         fragmentTitle = view.findViewById(R.id.fragment_title);
-        recyclerViewRestoran = view.findViewById(R.id.recyclerViewRestoran);
         notFound = view.findViewById(R.id.text_not_found);
 
         if (getArguments() != null) {
@@ -112,7 +110,7 @@ public class RestoranFragment extends Fragment {
                 }
 
                 if (response.body().getRestaurants().isEmpty()) {
-                    recyclerViewRestoran.setVisibility(View.GONE);
+                    mRecyclerView.setVisibility(View.GONE);
                     notFound.setVisibility(View.VISIBLE);
                     dialog.dismiss();
                     return;

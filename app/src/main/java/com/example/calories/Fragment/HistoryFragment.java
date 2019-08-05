@@ -39,7 +39,7 @@ public class HistoryFragment extends Fragment {
 
     private ServerApiInterface serverApiInterface;
 
-    ProgressDialog dialog;
+    private ProgressDialog dialog;
 
     @Nullable
     @Override

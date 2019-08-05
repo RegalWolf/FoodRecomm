@@ -14,7 +14,7 @@ import static com.example.calories.Config.Config.TOKEN;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    SharedPreferences sharedPreferences;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

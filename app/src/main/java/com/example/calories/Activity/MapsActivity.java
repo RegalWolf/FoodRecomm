@@ -2,9 +2,7 @@ package com.example.calories.Activity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.location.Location;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -23,13 +21,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -96,35 +89,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Log.i("Code", String.valueOf(response.code()));
                     return;
                 }
-                ArrayList<LatLng> points = null;
-                PolylineOptions lineOptions = null;
-                MarkerOptions markerOptions = new MarkerOptions();
-                String poli;
+
                 Maps maps = response.body();
-                for (int i=0; i<maps.getRoutes().size(); i++) {
-                    points = new ArrayList<LatLng>();
-                    lineOptions = new PolylineOptions();
 
-                    for (int j=0; j<maps.getRoutes().get(i).getLegs().size(); j++) {
-                        for (int k=0; k<maps.getRoutes().get(i).getLegs().get(j).getSteps().size(); k++) {
-
-                            poli = maps.getRoutes().get(i).getLegs().get(j).getSteps().get(k).getPolyline().getPoints();
-
-                            List<LatLng> list = decodePoly(poli);
-
-                            double lat1 = maps.getRoutes().get(i).getLegs().get(j).getSteps().get(k).getEndLocation().getLat();
-                            double lng2 = maps.getRoutes().get(i).getLegs().get(j).getSteps().get(k).getEndLocation().getLng();
-                            LatLng position = new LatLng(lat1, lng2);
-                            points.add(position);
-                        }
-                    }
-
-                    lineOptions.addAll(points);
-                    lineOptions.width(2);
-                    lineOptions.color(Color.RED);
-                }
-
-                mMap.addPolyline(lineOptions);
                 Log.i("Body Directions", maps.getStatus());
             }
 
@@ -176,7 +143,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleMap.addMarker(markerOptions);
         googleMap.addMarker(markerOptions1);
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

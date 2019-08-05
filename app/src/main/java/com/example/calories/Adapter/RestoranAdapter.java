@@ -22,7 +22,7 @@ import java.util.List;
 public class RestoranAdapter extends RecyclerView.Adapter<RestoranAdapter.ZomatoViewHolder> {
 
     private List<Restaurant> mList;
-    Context context;
+    private Context context;
     double lattitude;
     double longitude;
 

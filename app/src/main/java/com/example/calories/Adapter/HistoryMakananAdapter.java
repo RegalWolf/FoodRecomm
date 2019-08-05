@@ -78,7 +78,7 @@ public class HistoryMakananAdapter extends RecyclerView.Adapter<HistoryMakananAd
 
         historyMakananViewHolder.tanggal.setText(tanggal + " WIB");
         historyMakananViewHolder.nama_makanan.setText(currentItem.getNama() + " (100 g)");
-        historyMakananViewHolder.kalori.setText(currentItem.getKalori());
+        historyMakananViewHolder.kalori.setText(String.valueOf(currentItem.getKalori()));
         historyMakananViewHolder.jumlahProtein.setText(String.valueOf(currentItem.getProtein()));
         historyMakananViewHolder.jumlahLemak.setText(String.valueOf(currentItem.getLemak()));
         historyMakananViewHolder.jumlahKarbohidrat.setText(String.valueOf(currentItem.getKarbohidrat()));
@@ -101,17 +101,6 @@ public class HistoryMakananAdapter extends RecyclerView.Adapter<HistoryMakananAd
         } else if (prioritas.equals("Dihindari")) {
             historyMakananViewHolder.iconPrioritas.setImageResource(R.drawable.ic_dihindari_24dp);
         }
-
-//        historyMakananViewHolder.rootLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(v.getContext(), DetailMakananActivity.class);
-//                intent.putExtra("makanan_id", currentItem.getMakanan_id());
-//                intent.putExtra("nama", currentItem.getNama());
-//                intent.putExtra("kalori", currentItem.getKalori());
-//                v.getContext().startActivity(intent);
-//            }
-//        });
     }
 
     @Override

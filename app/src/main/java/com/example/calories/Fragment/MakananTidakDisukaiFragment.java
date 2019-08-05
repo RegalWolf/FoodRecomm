@@ -39,10 +39,9 @@ public class MakananTidakDisukaiFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private RecyclerView recyclerViewMakananTidakDisukai;
     private TextView notFound;
 
-    ProgressDialog dialog;
+    private ProgressDialog dialog;
 
     @Nullable
     @Override
@@ -57,7 +56,6 @@ public class MakananTidakDisukaiFragment extends Fragment {
 
         serverApiInterface = retrofit.create(ServerApiInterface.class);
 
-        recyclerViewMakananTidakDisukai = view.findViewById(R.id.recyclerViewMakananTidakDisukai);
         notFound = view.findViewById(R.id.text_not_found);
 
         initDialog();
@@ -95,7 +93,7 @@ public class MakananTidakDisukaiFragment extends Fragment {
             public void onResponse(Call<List<MakananTidakDisukai>> call, Response<List<MakananTidakDisukai>> response) {
                 if (!response.isSuccessful()) {
                     Log.i("Code", String.valueOf(response.code()));
-                    recyclerViewMakananTidakDisukai.setVisibility(View.GONE);
+                    mRecyclerView.setVisibility(View.GONE);
                     notFound.setVisibility(View.VISIBLE);
                     dialog.dismiss();
                     return;

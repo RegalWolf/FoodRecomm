@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    ProgressDialog dialog;
+    private ProgressDialog dialog;
 
     private ServerApiInterface serverApiInterface;
 
@@ -54,7 +54,6 @@ public class HomeFragment extends Fragment {
     private TextView kaloriDikonsumsi;
     private TextView kaloriSisa;
     private TextView kondisiTubuh;
-    private RecyclerView recyclerViewMakanan;
     private TextView notFound;
     private TextView kaloriSarapan;
     private TextView kaloriMakanSiang;
@@ -62,9 +61,7 @@ public class HomeFragment extends Fragment {
 
     private Spinner spinner;
 
-
-    View view;
-
+    private View view;
 
     @Nullable
     @Override
@@ -88,7 +85,6 @@ public class HomeFragment extends Fragment {
         kaloriDikonsumsi = view.findViewById(R.id.jumlahKaloriDikonsumsi);
         kaloriSisa = view.findViewById(R.id.jumlah_kalori);
         kondisiTubuh = view.findViewById(R.id.kondisi_tubuh);
-        recyclerViewMakanan = view.findViewById(R.id.recyclerViewMakanan);
         notFound = view.findViewById(R.id.text_not_found);
         kaloriSarapan = view.findViewById(R.id.value_sarapan);
         kaloriMakanSiang = view.findViewById(R.id.value_makan_siang);
@@ -101,7 +97,6 @@ public class HomeFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getContext());
 
         mRecyclerView.setLayoutManager(mLayoutManager);
-
 
         return view;
     }
@@ -162,9 +157,9 @@ public class HomeFragment extends Fragment {
                 final int jmlKaloriMakanSiang = (int) (kaloriDibutuhkan * 0.4);
                 final int jmlKaloriMakanMalam = (int) (kaloriDibutuhkan * 0.3);
 
-                kaloriSarapan.setText(String.valueOf(jmlKaloriSarapan));
-                kaloriMakanSiang.setText(String.valueOf(jmlKaloriMakanSiang));
-                kaloriMakanMalam.setText(String.valueOf(jmlKaloriMakanMalam));
+                kaloriSarapan.setText(String.valueOf(jmlKaloriSarapan) + " Kkal");
+                kaloriMakanSiang.setText(String.valueOf(jmlKaloriMakanSiang) + " Kkal");
+                kaloriMakanMalam.setText(String.valueOf(jmlKaloriMakanMalam) + " Kkal");
 
                 ArrayAdapter<CharSequence> adapter = ArrayAdapter
                         .createFromResource(getContext(), R.array.rekomendasi_makanan, android.R.layout.simple_spinner_item);
@@ -291,7 +286,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<List<Makanan>> call, Response<List<Makanan>> response) {
                 if (!response.isSuccessful()) {
                     Log.i("Code", String.valueOf(response.code()));
-                    recyclerViewMakanan.setVisibility(View.GONE);
+                    mRecyclerView.setVisibility(View.GONE);
                     notFound.setVisibility(View.VISIBLE);
                     dialog.dismiss();
                     return;
@@ -333,7 +328,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<List<Makanan>> call, Response<List<Makanan>> response) {
                 if (!response.isSuccessful()) {
                     Log.i("Code", String.valueOf(response.code()));
-                    recyclerViewMakanan.setVisibility(View.GONE);
+                    mRecyclerView.setVisibility(View.GONE);
                     notFound.setVisibility(View.VISIBLE);
                     dialog.dismiss();
                     return;
@@ -373,7 +368,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<List<Makanan>> call, Response<List<Makanan>> response) {
                 if (!response.isSuccessful()) {
                     Log.i("Code", String.valueOf(response.code()));
-                    recyclerViewMakanan.setVisibility(View.GONE);
+                    mRecyclerView.setVisibility(View.GONE);
                     notFound.setVisibility(View.VISIBLE);
                     dialog.dismiss();
                     return;
@@ -414,7 +409,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<List<Makanan>> call, Response<List<Makanan>> response) {
                 if (!response.isSuccessful()) {
                     Log.i("Code", String.valueOf(response.code()));
-                    recyclerViewMakanan.setVisibility(View.GONE);
+                    mRecyclerView.setVisibility(View.GONE);
                     notFound.setVisibility(View.VISIBLE);
                     dialog.dismiss();
                     return;
@@ -455,7 +450,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<List<Makanan>> call, Response<List<Makanan>> response) {
                 if (!response.isSuccessful()) {
                     Log.i("Code", String.valueOf(response.code()));
-                    recyclerViewMakanan.setVisibility(View.GONE);
+                    mRecyclerView.setVisibility(View.GONE);
                     notFound.setVisibility(View.VISIBLE);
                     dialog.dismiss();
                     return;

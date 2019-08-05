@@ -40,10 +40,9 @@ public class TutorialFragment extends Fragment {
 
     private TextView fragmentTitle;
     private String namaMakanan;
-    private RecyclerView recyclerViewTutorial;
     private TextView notFound;
 
-    ProgressDialog dialog;
+    private ProgressDialog dialog;
 
     @Nullable
     @Override
@@ -67,7 +66,6 @@ public class TutorialFragment extends Fragment {
         initDialog();
 
         fragmentTitle = view.findViewById(R.id.fragment_title);
-        recyclerViewTutorial = view.findViewById(R.id.recyclerViewTutorial);
         notFound = view.findViewById(R.id.text_not_found);
 
         if (getArguments() != null) {
@@ -107,7 +105,7 @@ public class TutorialFragment extends Fragment {
                 }
 
                 if (response.body().getItems().isEmpty()) {
-                    recyclerViewTutorial.setVisibility(View.GONE);
+                    mRecyclerView.setVisibility(View.GONE);
                     notFound.setVisibility(View.VISIBLE);
                     dialog.dismiss();
                     return;

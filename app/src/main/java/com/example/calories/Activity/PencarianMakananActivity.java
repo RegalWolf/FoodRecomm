@@ -43,7 +43,7 @@ public class PencarianMakananActivity extends AppCompatActivity {
     private TextView pencarianMsg;
     private TextView notFound;
 
-    ProgressDialog dialog;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +71,7 @@ public class PencarianMakananActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
     }
 
-    private void initDialog(){
+    private void initDialog() {
         dialog = new ProgressDialog(this);
         dialog.setTitle("Loading");
         dialog.setMessage("Sedang Memproses...");

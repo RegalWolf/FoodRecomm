@@ -10,12 +10,13 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
+import static com.example.calories.Config.Config.GOOGLE_API_KEY;
+
 public class DetailTutorialActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
-    public static final String GOOGLE_API_KEY = "AIzaSyC0ZwxfQAP9NFeHnzCnFw73ZLdZfW7m_EQ";
-    public String VIDEO_ID;
+    private String VIDEO_ID;
 
-    YouTubePlayerView mYoutubePlayerView = null;
+    private YouTubePlayerView mYoutubePlayerView = null;
 
     private TextView judulTutorial;
     private TextView namaChannel;
@@ -23,7 +24,7 @@ public class DetailTutorialActivity extends YouTubeBaseActivity implements YouTu
     private TextView deskripsi;
     private TextView failMsg;
 
-    Bundle bundleGet;
+    private Bundle bundleGet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

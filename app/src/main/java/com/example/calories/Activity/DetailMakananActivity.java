@@ -54,7 +54,7 @@ public class DetailMakananActivity extends AppCompatActivity {
     private TextView namaMakanan;
     private TextView kaloriMakanan;
 
-    ProgressDialog dialog;
+    private ProgressDialog dialog;
 
     private String nama;
     private int kalori;
@@ -68,8 +68,9 @@ public class DetailMakananActivity extends AppCompatActivity {
     private ServerApiInterface serverApiInterface;
 
     private static final int REQUEST_LOCATION = 1;
-    LocationManager locationManager;
-    String lattitude, longitude;
+    private LocationManager locationManager;
+    private String lattitude;
+    private String longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

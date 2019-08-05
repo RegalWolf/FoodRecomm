@@ -10,6 +10,7 @@ public class Config {
     public static final String ZOMATO_KEY = "2eb407b7d87b1b6605cbbea95773c110";
     public static final String YOUTUBE_KEY = "AIzaSyCeAKwYQOCTTX9G0yHhbR6loB14SoBDGTM";
     public static final String DIRECTIONS_KEY = "AIzaSyCJroCRerA2fh53TCQAzF-dINh0CX0ppls";
+    public static final String GOOGLE_API_KEY = "AIzaSyC0ZwxfQAP9NFeHnzCnFw73ZLdZfW7m_EQ";
 
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String TOKEN = "token";
