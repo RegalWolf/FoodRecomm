@@ -3,15 +3,12 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.calories.Parser.PointsParser;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
 
 
 public class FetchURL extends AsyncTask<String, Void, String> {

@@ -7,11 +7,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.widget.Toast;
 
-import com.example.calories.Interface.DirectionsApiInterface;
-import com.example.calories.Model.Maps.Maps;
+import com.example.calories.Interface.TaskLoadedCallback;
+import com.example.calories.Parser.FetchURL;
 import com.example.calories.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -21,19 +20,14 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
 import static com.example.calories.Config.Config.DIRECTIONS_KEY;
-import static com.example.calories.Config.Config.MAPS_URL;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, TaskLoadedCallback {
 
     private GoogleMap mMap;
 
@@ -42,72 +36,43 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private static final int REQUEST_CODE = 101;
 
-    private DirectionsApiInterface mapsApiInterface;
+    String lattitudeOrigin;
+    String longitudeOrigin;
+    String lattitudeDestination;
+    String longitudeDestination;
+    LatLng latLng;
+    LatLng latLng1;
 
-    String lat, lon;
-    String lattitude;
-    String longitude;
+    private Polyline currentPolyline;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restoran_maps);
 
-        Retrofit retrofit = new Retrofit
-                .Builder()
-                .baseUrl(MAPS_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        mapsApiInterface = retrofit.create(DirectionsApiInterface.class);
-
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         Bundle bundleGet = getIntent().getExtras();
 
-        lat = bundleGet.getString("lat");
-        lon = bundleGet.getString("lon");
-        lattitude = bundleGet.getString("lattitude");
-        longitude = bundleGet.getString("longitude");
+        lattitudeOrigin = bundleGet.getString("lat");
+        longitudeOrigin = bundleGet.getString("lon");
+        lattitudeDestination = bundleGet.getString("lattitude");
+        longitudeDestination = bundleGet.getString("longitude");
 
-        Log.i("Hai", lattitude + ", " + longitude);
+        latLng = new LatLng(Double.valueOf(lattitudeDestination), Double.valueOf(longitudeDestination));
+        latLng1 = new LatLng(Double.valueOf(lattitudeOrigin), Double.valueOf(longitudeOrigin));
 
-        getDirection();
-    }
+        getLocation();
+        new FetchURL(MapsActivity.this).execute(getUrl(latLng, latLng1, "driving"), "driving");
 
-    private void getDirection() {
-        Call<Maps> call = mapsApiInterface.getMaps(
-                lattitude + "," + longitude,
-                lat + "," + lon,
-                DIRECTIONS_KEY
-        );
-
-        call.enqueue(new Callback<Maps>() {
-            @Override
-            public void onResponse(Call<Maps> call, Response<Maps> response) {
-                if (!response.isSuccessful()) {
-                    Log.i("Code", String.valueOf(response.code()));
-                    return;
-                }
-
-                Maps maps = response.body();
-
-                Log.i("Body Directions", maps.getStatus());
-            }
-
-            @Override
-            public void onFailure(Call<Maps> call, Throwable t) {
-                Log.i("Error", t.getMessage());
-            }
-        });
     }
 
     private void getLocation() {
         if (
                 ActivityCompat.checkSelfPermission(this,
                         Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this,
-                        Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.checkSelfPermission(this,
+                                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]
                     {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
             return;
@@ -132,8 +97,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng latLng = new LatLng(Double.valueOf(lattitude), Double.valueOf(longitude));
-        LatLng latLng1 = new LatLng(Double.valueOf(lat), Double.valueOf(lon));
+
         MarkerOptions markerOptions = new MarkerOptions().position(latLng)
                 .title("Your location");
         MarkerOptions markerOptions1 = new MarkerOptions().position(latLng1)
@@ -142,7 +106,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
         googleMap.addMarker(markerOptions);
         googleMap.addMarker(markerOptions1);
+
     }
+    private String getUrl(LatLng origin, LatLng dest, String directionMode) {
+        // Origin of route
+        String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
+        // Destination of route
+        String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
+        // Mode
+        String mode = "mode=" + directionMode;
+        // Building the parameters to the web service
+        String parameters = str_origin + "&" + str_dest + "&" + mode;
+        // Output format
+        String output = "json";
+        // Building the url to the web service
+        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters + "&key=" + DIRECTIONS_KEY;
+        return url;
+    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -153,5 +134,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onTaskDone(Object... values) {
+        if (currentPolyline != null)
+            currentPolyline.remove();
+        currentPolyline = mMap.addPolyline((PolylineOptions) values[0]);
     }
 }
