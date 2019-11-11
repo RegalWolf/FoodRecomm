@@ -102,7 +102,8 @@ public class RestoranFragment extends Fragment {
 
         call.enqueue(new Callback<ZomatoApi>() {
             @Override
-            public void onResponse(Call<ZomatoApi> call, Response<ZomatoApi> response) {
+            public void onResponse(Call<ZomatoApi> call,
+                                   Response<ZomatoApi> response) {
                 if (!response.isSuccessful()) {
                     Log.i("Code", String.valueOf(response.code()));
                     dialog.dismiss();
@@ -116,11 +117,14 @@ public class RestoranFragment extends Fragment {
                     return;
                 }
 
-                List<Restaurant> restoranList = response.body().getRestaurants();
+                List<Restaurant> restoranList = response.body()
+                        .getRestaurants();
 
-                Log.i("Hasil", restoranList.get(0).getRestaurant().getId());
+                Log.i("Hasil", restoranList.get(0).getRestaurant()
+                        .getId());
 
-                mAdapter = new RestoranAdapter(restoranList, getContext(), lattitude, longitude);
+                mAdapter = new RestoranAdapter(restoranList,
+                        getContext(), lattitude, longitude);
 
                 mRecyclerView.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();

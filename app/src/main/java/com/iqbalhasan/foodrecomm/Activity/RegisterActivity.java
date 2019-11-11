@@ -1,5 +1,6 @@
 package com.iqbalhasan.foodrecomm.Activity;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,6 +38,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private ServerApiInterface serverApiInterface;
 
+    private ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,9 +59,19 @@ public class RegisterActivity extends AppCompatActivity {
                 .build();
 
         serverApiInterface = retrofit.create(ServerApiInterface.class);
+
+        initDialog();
+    }
+
+    private void initDialog(){
+        dialog = new ProgressDialog(this);
+        dialog.setTitle("Loading");
+        dialog.setMessage("Sedang Memproses...");
     }
 
     private void Register() {
+        dialog.show();
+
         final String email = et_email.getText().toString();
         final String password = et_password.getText().toString();
         final String confirmPassword = et_confirmPassword.getText().toString();
@@ -110,10 +123,11 @@ public class RegisterActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
+                    dialog.dismiss();
                     return;
                 }
 
-                Log.i("Body", response.body().getRegister());
+                dialog.dismiss();
 
                 AlertDialog builder = new AlertDialog.Builder(RegisterActivity.this)
                     .setTitle("Daftar")
@@ -133,6 +147,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Register> call, Throwable t) {
+                dialog.dismiss();
                 Log.i("Error", t.getMessage());
             }
         });

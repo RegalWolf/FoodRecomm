@@ -134,4 +134,127 @@
         android:textAlignment="center"
         android:visibility="gone"/>
 
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/popup_ubah_makanan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#75000000"
+        android:visibility="gone">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_left1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="24dp" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_right2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="24dp" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/guideline_left1"
+            app:layout_constraintEnd_toEndOf="@id/guideline_right2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/bg_popup">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                android:background="@drawable/bg_popup">
+
+                <TextView
+                    android:id="@+id/title_popup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="Ubah Makanan"
+                    android:textSize="18sp"
+                    android:textColor="#FF6161"/>
+
+                <ImageView
+                    android:id="@+id/btn_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/title_popup"
+                    app:layout_constraintBottom_toBottomOf="@id/title_popup"
+                    app:srcCompat="@drawable/ic_close_grey_24dp"/>
+
+                <TextView
+                    android:id="@+id/text_jumlah_makanan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/title_popup"
+                    android:layout_marginTop="16dp"
+                    android:text="Total makanan"/>
+
+                <EditText
+                    android:id="@+id/et_jumlah_makanan"
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/text_jumlah_makanan"
+                    android:layout_marginTop="4dp"
+                    android:text="100"
+                    android:textSize="14sp"
+                    android:paddingRight="50dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/et_jumlah_makanan"
+                    app:layout_constraintBottom_toBottomOf="@id/et_jumlah_makanan"
+                    app:layout_constraintEnd_toEndOf="@id/et_jumlah_makanan"
+                    android:text="gram"/>
+
+                <TextView
+                    android:id="@+id/jumlahMakanan_msg"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_jumlah_makanan"
+                    android:text="Jumlah makanan tidak boleh kosong"
+                    android:layout_marginTop="8dp"
+                    android:textColor="#FF6161"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/btn_simpan_ubah"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/jumlahMakanan_msg"
+                    android:background="@drawable/et_simpan_makanan"
+                    android:text="Simpan"
+                    android:layout_marginTop="8dp"
+                    android:textColor="#FF6161"/>
+
+                <Button
+                    android:id="@+id/btn_batal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toStartOf="@id/btn_simpan_ubah"
+                    app:layout_constraintTop_toTopOf="@id/btn_simpan_ubah"
+                    android:background="@drawable/et_simpan_makanan"
+                    android:layout_marginRight="8dp"
+                    android:text="Batal"
+                    android:textColor="#FF6161"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </android.support.constraint.ConstraintLayout>
+
 </android.support.constraint.ConstraintLayout>

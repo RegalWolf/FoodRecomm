@@ -47,15 +47,13 @@ public class DeviceScanActivity extends AppCompatActivity {
 
         mHandler = new Handler();
 
-        // Use this check to determine whether BLE is supported on the device.  Then you can
-        // selectively disable BLE-related features.
+        // Inisialisasi bluetooth LE
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
             Toast.makeText(this, R.string.ble_not_supported, Toast.LENGTH_SHORT).show();
             finish();
         }
 
-        // Initializes a Bluetooth adapter.  For API level 18 and above, get a reference to
-        // BluetoothAdapter through BluetoothManager.
+        // Inisialisasi bluetooth
         final BluetoothManager bluetoothManager =
                 (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         mBluetoothAdapter = bluetoothManager.getAdapter();
@@ -67,9 +65,6 @@ public class DeviceScanActivity extends AppCompatActivity {
             return;
         }
     }
-
-
-
 
 
     @Override
@@ -123,8 +118,6 @@ public class DeviceScanActivity extends AppCompatActivity {
         scanLeDevice(false);
         mLeDeviceListAdapter.clear();
     }
-
-
 
     private void scanLeDevice(final boolean enable) {
         if (enable) {

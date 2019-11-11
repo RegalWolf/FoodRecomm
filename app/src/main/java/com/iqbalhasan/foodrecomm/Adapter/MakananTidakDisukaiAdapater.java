@@ -167,7 +167,6 @@ public class MakananTidakDisukaiAdapater extends RecyclerView.Adapter<MakananTid
                         .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(v.getContext(), "Gagal terhapus", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
                             }
                         })

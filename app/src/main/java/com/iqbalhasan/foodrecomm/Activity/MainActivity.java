@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private ConstraintLayout infoPopupKategori;
     private ConstraintLayout infoPopupMakanan;
     private FloatingActionButton btnPencarian;
-
+    private static final int REQUEST_LOCATION = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new HomeFragment()).commit();
+
+        ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission
+                .ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
     }
 
 

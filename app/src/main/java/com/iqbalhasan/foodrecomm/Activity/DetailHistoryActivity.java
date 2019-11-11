@@ -4,11 +4,14 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.iqbalhasan.foodrecomm.Adapter.HistoryMakananAdapter;
@@ -45,6 +48,11 @@ public class DetailHistoryActivity extends AppCompatActivity {
     private RecyclerView recyclerViewHistoryMakanan;
     private TextView notFound;
 
+    private ConstraintLayout popupUbahMakanan;
+    private Button btnSimpanUbah;
+    private ImageView btnClose;
+    private Button btnBatal;
+
     private ServerApiInterface serverApiInterface;
 
     private ProgressDialog dialog;
@@ -75,6 +83,10 @@ public class DetailHistoryActivity extends AppCompatActivity {
         text_kalori_dikonsumsi = findViewById(R.id.jml_kalori_dikonsumsi);
         recyclerViewHistoryMakanan = findViewById(R.id.recyclerViewHistoryMakanan);
         notFound = findViewById(R.id.text_not_found);
+        popupUbahMakanan = findViewById(R.id.popup_ubah_makanan);
+        btnClose = findViewById(R.id.btn_close);
+        btnBatal = findViewById(R.id.btn_batal);
+        btnSimpanUbah = findViewById(R.id.btn_simpan_ubah);
 
         text_tanggal.setText(tanggal);
         text_kalori_dibutuhkan.setText(kalori_dibutuhkan);
@@ -119,7 +131,8 @@ public class DetailHistoryActivity extends AppCompatActivity {
 
                 Log.i("Body", String.valueOf(response.body()));
 
-                mAdapter = new HistoryMakananAdapter(historyMakananList);
+                mAdapter = new HistoryMakananAdapter(historyMakananList, popupUbahMakanan,
+                        btnClose, btnBatal, btnSimpanUbah);
 
                 mRecyclerView.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();

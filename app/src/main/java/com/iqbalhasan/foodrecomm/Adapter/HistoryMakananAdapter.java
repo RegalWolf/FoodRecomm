@@ -1,21 +1,32 @@
 package com.iqbalhasan.foodrecomm.Adapter;
 
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.iqbalhasan.foodrecomm.Interface.ServerApiInterface;
 import com.iqbalhasan.foodrecomm.Model.HistoryMakanan;
 import com.iqbalhasan.foodrecomm.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class HistoryMakananAdapter extends RecyclerView.Adapter<HistoryMakananAdapter.HistoryMakananViewHolder> {
 
     private List<HistoryMakanan> mList;
+
+    private ServerApiInterface serverApiInterface;
+    private ConstraintLayout popupUbahMakanan;
+    private Button btnSimpanUbah;
+    private ImageView btnClose;
+    private Button btnBatal;
 
     public static class HistoryMakananViewHolder extends RecyclerView.ViewHolder {
         public TextView tanggal;
@@ -58,8 +69,13 @@ public class HistoryMakananAdapter extends RecyclerView.Adapter<HistoryMakananAd
         }
     }
 
-    public HistoryMakananAdapter(List<HistoryMakanan> list) {
+    public HistoryMakananAdapter(List<HistoryMakanan> list, ConstraintLayout popupUbahMakanan,
+                                 ImageView btnClose, Button btnBatal, Button btnSimpanUbah) {
         this.mList = list;
+        this.popupUbahMakanan = popupUbahMakanan;
+        this.btnClose = btnClose;
+        this.btnBatal = btnBatal;
+        this.btnSimpanUbah = btnSimpanUbah;
     }
 
     @NonNull
@@ -71,12 +87,12 @@ public class HistoryMakananAdapter extends RecyclerView.Adapter<HistoryMakananAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HistoryMakananViewHolder historyMakananViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final HistoryMakananViewHolder historyMakananViewHolder, final int i) {
         final HistoryMakanan currentItem = mList.get(i);
 
-        String tanggal = currentItem.getTanggal().substring(11,19);
+        String waktu = currentItem.getTanggal().substring(11,19);
 
-        historyMakananViewHolder.tanggal.setText(tanggal + " WIB");
+        historyMakananViewHolder.tanggal.setText(waktu + " WIB");
         historyMakananViewHolder.nama_makanan.setText(currentItem.getNama() + " (100 g)");
         historyMakananViewHolder.kalori.setText(String.valueOf(currentItem.getKalori()));
         historyMakananViewHolder.jumlahProtein.setText(String.valueOf(currentItem.getProtein()));
@@ -91,6 +107,8 @@ public class HistoryMakananAdapter extends RecyclerView.Adapter<HistoryMakananAd
         historyMakananViewHolder.jumlahMakanan.setText(String.valueOf(currentItem.getJumlah()) + " gram");
         historyMakananViewHolder.totalKalori.setText(String.valueOf(currentItem.getTotal_kalori()) + " Kkal");
 
+        final int makanan_id = Integer.parseInt(currentItem.getMakanan_id());
+
         String prioritas = currentItem.getPrioritas();
         if (prioritas.equals("Dianjurkan")) {
             historyMakananViewHolder.iconPrioritas.setImageResource(R.drawable.ic_dianjurkan_24dp);
@@ -101,6 +119,103 @@ public class HistoryMakananAdapter extends RecyclerView.Adapter<HistoryMakananAd
         } else if (prioritas.equals("Dihindari")) {
             historyMakananViewHolder.iconPrioritas.setImageResource(R.drawable.ic_dihindari_24dp);
         }
+
+        String tanggal = currentItem.getTanggal().substring(0,10);
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date today = new Date();
+
+//        if (tanggal.equals(formatter.format(today))) {
+//            historyMakananViewHolder.btnHapus.setVisibility(View.VISIBLE);
+//            historyMakananViewHolder.btnEdit.setVisibility(View.VISIBLE);
+//        }
+
+//        historyMakananViewHolder.btnHapus.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(final View v) {
+//                final AlertDialog builder = new AlertDialog.Builder(v.getContext())
+//                        .setTitle("Hapus Makanan")
+//                        .setMessage("Hapus makanan ini?")
+//                        .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(final DialogInterface dialog, int which) {
+//                                SharedPreferences sharedPreferences = v.getContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+//
+//                                String token = sharedPreferences.getString(TOKEN, "token");
+//
+//                                Call<HapusMakananDisukai> call = serverApiInterface.hapusMakananDisukai(
+//                                        makanan_id,
+//                                        token
+//                                );
+//
+//                                call.enqueue(new Callback<HapusMakananDisukai>() {
+//                                    @Override
+//                                    public void onResponse(Call<HapusMakananDisukai> call, Response<HapusMakananDisukai> response) {
+//                                        if (!response.isSuccessful()) {
+//                                            Log.i("Code", String.valueOf(response.code()));
+//                                            Toast.makeText(v.getContext(), "Gagal terhapus", Toast.LENGTH_SHORT).show();
+//                                            return;
+//                                        }
+//
+//                                        mList.remove(i);
+//                                        notifyItemRemoved(i);
+//
+//                                        Toast.makeText(v.getContext(), "Sukses terhapus", Toast.LENGTH_SHORT).show();
+//                                    }
+//
+//                                    @Override
+//                                    public void onFailure(Call<HapusMakananDisukai> call, Throwable t) {
+//                                        Toast.makeText(v.getContext(), "Gagal terhapus", Toast.LENGTH_SHORT).show();
+//                                    }
+//                                });
+//                            }
+//                        })
+//                        .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                            }
+//                        })
+//                        .create();
+//
+//                builder.show();
+//            }
+//        });
+//
+//        historyMakananViewHolder.btnEdit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                popupUbahMakanan.setVisibility(View.VISIBLE);
+//
+//                popupUbahMakanan.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        popupUbahMakanan.setVisibility(View.GONE);
+//                    }
+//                });
+//
+//                btnClose.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        popupUbahMakanan.setVisibility(View.GONE);
+//                    }
+//                });
+//
+//                btnBatal.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        popupUbahMakanan.setVisibility(View.GONE);
+//                    }
+//                });
+//
+//                btnSimpanUbah.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Toast.makeText(v.getContext(), "Bissmillah", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//            }
+//        });
     }
 
     @Override

@@ -31,17 +31,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
 
-    Location currentLocation;
-    FusedLocationProviderClient fusedLocationProviderClient;
+    private Location currentLocation;
+    private FusedLocationProviderClient fusedLocationProviderClient;
 
     private static final int REQUEST_CODE = 101;
 
-    String lattitudeOrigin;
-    String longitudeOrigin;
-    String lattitudeDestination;
-    String longitudeDestination;
-    LatLng latLng;
-    LatLng latLng1;
+    private String lattitudeOrigin;
+    private String longitudeOrigin;
+    private String lattitudeDestination;
+    private String longitudeDestination;
+    private LatLng latLng;
+    private LatLng latLng1;
 
     private Polyline currentPolyline;
 
@@ -108,6 +108,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleMap.addMarker(markerOptions1);
 
     }
+
     private String getUrl(LatLng origin, LatLng dest, String directionMode) {
         // Origin of route
         String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
@@ -120,10 +121,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Output format
         String output = "json";
         // Building the url to the web service
-        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters + "&key=" + DIRECTIONS_KEY;
+        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" +
+                parameters + "&key=" + DIRECTIONS_KEY;
         return url;
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

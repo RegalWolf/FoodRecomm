@@ -1,5 +1,6 @@
 package com.iqbalhasan.foodrecomm.Activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -37,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private ServerApiInterface serverApiInterface;
 
+    private ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,9 +57,19 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         serverApiInterface = retrofit.create(ServerApiInterface.class);
+
+        initDialog();
+    }
+
+    private void initDialog(){
+        dialog = new ProgressDialog(this);
+        dialog.setTitle("Loading");
+        dialog.setMessage("Sedang Memproses...");
     }
 
     private void login() {
+        dialog.show();
+
         final String email = et_email.getText().toString();
         final String password = et_password.getText().toString();
 
@@ -98,6 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
+                    dialog.dismiss();
                     return;
                 }
 
@@ -113,6 +127,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Login> call, Throwable t) {
+                dialog.dismiss();
                 Log.i("Error", t.getMessage());
             }
         });
@@ -136,9 +151,11 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(a);
                     finish();
 
+                    dialog.dismiss();
                     return;
                 }
 
+                dialog.dismiss();
                 Intent a = new Intent(LoginActivity.this, MainActivity.class);
                 a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(a);
@@ -147,6 +164,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Profile> call, Throwable t) {
+                dialog.dismiss();
                 Log.i("Error", t.getMessage());
             }
         });

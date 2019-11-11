@@ -1,5 +1,6 @@
 package com.iqbalhasan.foodrecomm.Activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -53,6 +54,8 @@ public class ProfileActivity extends AppCompatActivity {
     private String jenisKelamin;
     private String tingkatAktivitas;
 
+    private ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +93,14 @@ public class ProfileActivity extends AppCompatActivity {
 
         jkSpinner(adapterJK);
         aktivitasSpinner(adapterAktivitas);
+
+        initDialog();
+    }
+
+    private void initDialog(){
+        dialog = new ProgressDialog(this);
+        dialog.setTitle("Loading");
+        dialog.setMessage("Sedang Memproses...");
     }
 
     private void jkSpinner(ArrayAdapter<CharSequence> adapterJK) {
@@ -138,6 +149,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void createProfile() {
+        dialog.show();
+
         Integer usia = null;
         if (et_usia.getText().toString().trim().length() > 0) {
             usia = Integer.parseInt(et_usia.getText().toString());
@@ -221,11 +234,11 @@ public class ProfileActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
+                    dialog.dismiss();
                     return;
                 }
 
-                Log.i("Body", response.body().getProfile());
-                Log.i("Body", response.body().getKalori());
+                dialog.dismiss();
 
                 Intent a = new Intent(ProfileActivity.this, MainActivity.class);
                 a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -235,6 +248,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Profile> call, Throwable t) {
+                dialog.dismiss();
                 Log.i("Error", t.getMessage());
             }
         });

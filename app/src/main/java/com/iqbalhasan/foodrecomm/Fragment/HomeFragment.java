@@ -101,7 +101,6 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-
     private void getKalori() {
         dialog.show();
 
@@ -258,6 +257,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<Kalori> call, Throwable t) {
+                dialog.dismiss();
                 Log.i("Error", t.getMessage());
             }
         });
@@ -272,7 +272,8 @@ public class HomeFragment extends Fragment {
     private void getRekomendasiMakanan(int kalori) {
         dialog.show();
 
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = this.getActivity().
+                getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
 
         String token = sharedPreferences.getString(TOKEN, "token");
 
@@ -283,7 +284,8 @@ public class HomeFragment extends Fragment {
 
         call.enqueue(new Callback<List<Makanan>>() {
             @Override
-            public void onResponse(Call<List<Makanan>> call, Response<List<Makanan>> response) {
+            public void onResponse(Call<List<Makanan>> call,
+                                   Response<List<Makanan>> response) {
                 if (!response.isSuccessful()) {
                     Log.i("Code", String.valueOf(response.code()));
                     mRecyclerView.setVisibility(View.GONE);

@@ -97,7 +97,8 @@ public class TutorialFragment extends Fragment {
 
         call.enqueue(new Callback<YoutubeApi>() {
             @Override
-            public void onResponse(Call<YoutubeApi> call, Response<YoutubeApi> response) {
+            public void onResponse(Call<YoutubeApi> call,
+                                   Response<YoutubeApi> response) {
                 if (!response.isSuccessful()) {
                     Log.i("Code", String.valueOf(response.code()));
                     dialog.dismiss();
